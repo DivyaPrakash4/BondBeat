@@ -1,12 +1,43 @@
-# React + Vite
+# 🎵 BondBeat – Real-Time Collaborative YouTube Watch Party
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+BondBeat is a **full-stack real-time video sync platform** that allows multiple users to watch, control, and chat over YouTube videos in a shared virtual room.  
+Built with **React (Vite)** on the frontend, **Spring Boot** on the backend, and **MySQL** for persistent storage.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- **🔗 Real-Time Video Sync** – Watch YouTube videos in perfect sync across all connected devices.
+- **🗂 Collaborative Playlist** – Add, select, and delete videos with instant updates on all clients.
+- **💬 Live Chat** – Interact with other viewers in the same room through a real-time chat box.
+- **⚡ <100ms Latency** – Built with **WebSocket (STOMP + SockJS)** for near-instant updates.
+- **📱 Responsive Design** – Works smoothly across desktops, tablets, and mobile devices.
+- **🛠 Modular Architecture** – Component-based React frontend and RESTful Spring Boot backend.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🖥 Tech Stack
+
+**Frontend**
+- React (Vite)  
+- JavaScript (ES6+)
+- YouTube IFrame API  
+- WebSocket Client (SockJS, STOMP)  
+- CSS3 (Responsive Design)
+
+**Backend**
+- Spring Boot  
+- Spring WebSocket  
+- RESTful APIs  
+- JPA (Hibernate)  
+- MySQL  
+
+---
+
+## 📸 Screenshots
+
+| Watch Party UI | Playlist Management | Live Chat |
+|----------------|--------------------|-----------|
+| ![Watch Party](docs/watch-party.png) | ![Playlist](docs/playlist.png) | ![Chat](docs/chat.png) |
+
+---
