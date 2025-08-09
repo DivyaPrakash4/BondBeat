@@ -35,9 +35,29 @@ Built with **React (Vite)** on the frontend, **Spring Boot** on the backend, and
 ---
 
 ## 📸 Screenshots
-
-| Watch Party UI | Playlist Management | Live Chat |
-|----------------|--------------------|-----------|
-| ![Watch Party](docs/watch-party.png) | ![Playlist](docs/playlist.png) | ![Chat](docs/chat.png) |
+<img width="757" height="338" alt="image" src="https://github.com/user-attachments/assets/0af3efdf-7a67-4590-91a7-ea50c66a4fe6" />
+<img width="841" height="352" alt="image" src="https://github.com/user-attachments/assets/1dfa1699-e8a6-4eb3-a1b5-51fa4d16b9c6" />
+<img width="1023" height="813" alt="image" src="https://github.com/user-attachments/assets/26dce990-a85b-4681-b5c5-15ff12132454" />
+<img width="920" height="429" alt="image" src="https://github.com/user-attachments/assets/5362a98d-bada-43ce-a218-f0cceeacb1d6" />
 
 ---
+
+## 📡 How It Works
+Join a Room – Each user enters a unique room via link.
+Add Videos – Use the form to add YouTube videos to the shared playlist.
+Control Playback – Play, pause, or skip — changes are synced for all users in real-time.
+Chat & Interact – Send messages via the integrated live chat box.
+
+---
+
+## 📈 System Architecture
+
+[ React + Vite ] <-> [ WebSocket / REST APIs ] <-> [ Spring Boot Backend ] <-> [ MySQL DB ]
+
+WebSocket handles real-time video sync and chat messages.
+REST APIs manage playlist CRUD operations.
+MySQL stores persistent playlist data.
+
+---
+
+_BondBeat – Watch. Sync. Connect._
