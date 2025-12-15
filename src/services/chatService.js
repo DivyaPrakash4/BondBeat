@@ -4,7 +4,7 @@ import SockJS from "sockjs-client";
 let stompClient;
 
 export const connectChatSocket = (roomId, onMessageReceived) => {
-  const socket = new SockJS("http://localhost:8080/ws");
+  const socket = new SockJS(`${import.meta.env.VITE_BACKEND_URL}/ws`);
   stompClient = new Client({
     webSocketFactory: () => socket,
     onConnect: () => {

@@ -3,7 +3,7 @@ import YouTubePlayer from "../components/YouTubePlayer";
 import AddVideoForm from "../components/AddVideoForm";
 import Playlist from "../components/Playlist";
 import ChatBox from "../components/ChatBox";
-import { fetchPlaylistFromBackend } from "../services/api";
+import { fetchPlaylistFromBackend, deleteVideo } from "../services/api";
 import {
   connectVideoSyncSocket,
   sendVideoSyncAction,
@@ -31,17 +31,22 @@ const Room = () => {
         if (data.action === "play" && playerRef.current) {
           playerRef.current.seekTo(data.timestamp, true);
           playerRef.current.playVideo();
-        } else if (data.action === "pause" && playerRef.current) {
+        } 
+        else if (data.action === "pause" && playerRef.current) {
           playerRef.current.pauseVideo();
-        } else if (data.action === "change" && data.videoUrl) {
+        } 
+        else if (data.action === "seek" && playerRef.current) {
+          playerRef.current.seekTo(data.timestamp, true);
+        } 
+        else if (data.action === "change" && data.videoUrl) {
           const cleanId = extractYouTubeVideoId(data.videoUrl);
           if (cleanId) setSelectedVideoUrl(`https://youtu.be/${cleanId}`);
         }
+
       });
     }
   }, [roomId]);
 
-  // Fetch playlist from backend
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -68,6 +73,16 @@ const Room = () => {
     }
   };
 
+  const handleSkip5Seconds = () => {
+    if (!playerRef.current) return;
+
+    const currentTime = playerRef.current.getCurrentTime();
+    const newTime = currentTime + 5;
+
+    sendVideoSyncAction(roomId, "seek", newTime);
+  };
+
+
   const handleSkip = () => {
     const currentIndex = playlist.findIndex(
       (video) =>
@@ -82,6 +97,33 @@ const Room = () => {
       sendVideoSyncAction(roomId, "change", 0, cleanUrl);
     }
   };
+
+  const handleDeleteVideo = async (id) => {
+    try {
+      // 1. Find the video BEFORE deleting
+      const videoToDelete = playlist.find((v) => v.id === id);
+
+      const isDeletingCurrent =
+        videoToDelete &&
+        selectedVideoUrl &&
+        extractYouTubeVideoId(videoToDelete.youtubeUrl) ===
+          extractYouTubeVideoId(selectedVideoUrl);
+
+      // 2. Delete from backend
+      await deleteVideo(id);
+
+      // 3. Update playlist on UI
+      setPlaylist((prev) => prev.filter((v) => v.id !== id));
+
+      // 4. If current video removed → skip to next
+      if (isDeletingCurrent) {
+        handleSkip();
+      }
+    } catch (err) {
+      console.error("❌ Delete failed:", err);
+    }
+  };
+
 
   const handleReady = (event) => {
     playerRef.current = event.target;
@@ -112,7 +154,8 @@ const Room = () => {
           <div style={styles.controls}>
             <button onClick={handlePlay}>▶ Play</button>
             <button onClick={handlePause}>⏸ Pause</button>
-            <button onClick={handleSkip}>⏭ Skip</button>
+            <button onClick={handleSkip5Seconds}>⏩ +5s</button>
+            <button onClick={handleSkip}>⏭ Next Song</button>
           </div>
         </>
       ) : (
@@ -124,6 +167,7 @@ const Room = () => {
           <Playlist
             playlist={playlist}
             onVideoSelect={handleVideoSelect}
+            onDelete={handleDeleteVideo} 
             currentVideoUrl={selectedVideoUrl}
           />
           <AddVideoForm

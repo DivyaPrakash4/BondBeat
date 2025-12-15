@@ -4,7 +4,7 @@ import Stomp from "stompjs";
 let stompClient = null;
 
 export const connectVideoSyncSocket = (roomId, onMessageReceived) => {
-  const socket = new SockJS("http://localhost:8080/ws"); // Update port if needed
+  const socket = new SockJS(`${import.meta.env.VITE_BACKEND_URL}/ws`);
   stompClient = Stomp.over(socket);
   stompClient.debug = null; // Disable console spam
 

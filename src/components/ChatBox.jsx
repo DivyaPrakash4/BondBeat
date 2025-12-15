@@ -45,6 +45,7 @@ const ChatBox = ({ username, roomId }) => {
 
 const styles = {
   container: {
+    margin:"20px",
     border: "1px solid #ccc",
     padding: "10px",
     borderRadius: "8px",

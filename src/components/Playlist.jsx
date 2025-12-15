@@ -1,25 +1,41 @@
-function Playlist({ playlist, onVideoSelect, currentVideoUrl }) {
+function Playlist({ playlist, onVideoSelect, onDelete, currentVideoUrl }) {
   return (
     <ul style={styles.list}>
       {playlist.map((video, index) => {
-        const isActive = video.youtubeUrl === currentVideoUrl;
+        const isActive =
+          video.youtubeUrl === currentVideoUrl;
+
         return (
           <li key={index} style={styles.item}>
-            <button
-              onClick={() => onVideoSelect(video.youtubeUrl)}
-              style={{
-                ...styles.button,
-                ...(isActive ? styles.active : {}),
-              }}
-            >
-              ▶ {video.title}
-            </button>
+            <div style={styles.row}>
+              
+              {/* Select Video Button */}
+              <button
+                onClick={() => onVideoSelect(video.youtubeUrl)}
+                style={{
+                  ...styles.button,
+                  ...(isActive ? styles.active : {}),
+                }}
+              >
+                ▶ {video.title}
+              </button>
+
+              {/* DELETE BUTTON */}
+              <button
+                onClick={() => onDelete(video.id)}
+                style={styles.deleteBtn}
+              >
+                ⌫
+              </button>
+
+            </div>
           </li>
         );
       })}
     </ul>
   );
 }
+
 
 const styles = {
   list: {
@@ -46,6 +62,18 @@ const styles = {
     backgroundColor: "#dfffd8",
     borderColor: "#4caf50",
     fontWeight: "bold",
+  },
+  row: {
+  display: "flex",
+  alignItems: "center",
+  gap: "10px",
+  },
+  deleteBtn: {
+    backgroundColor: "red",
+    border: "none",
+    padding: "8px 12px",
+    borderRadius: "6px",
+    cursor: "pointer",
   },
 };
 

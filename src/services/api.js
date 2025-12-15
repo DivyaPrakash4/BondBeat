@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8080/api/playlist";
+const BASE_URL = `${import.meta.env.VITE_BACKEND_URL}/api/playlist`;
 
 export const fetchPlaylistFromBackend = async () => {
   try {
@@ -22,3 +22,12 @@ export const addVideo = async (video) => {
   }
 };
 
+export const deleteVideo = async (id) => {
+  try {
+    await axios.delete(`${BASE_URL}/delete/${id}`);
+    return true;
+  } catch (err) {
+    console.error("❌ Error deleting video:", err);
+    throw err;
+  }
+};
