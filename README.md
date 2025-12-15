@@ -45,7 +45,9 @@ Built with **React (Vite)** on the frontend, **Spring Boot** on the backend, and
 ## 📡 How It Works
 - **Join a Room** – Each user enters a unique room via link.
 - **Add Videos** – Use the form to add YouTube videos to the shared playlist.
-- **Control Playback** – Play, pause, or skip — changes are synced for all users in real-time.
+- **Delete Videos** – Use the form to delete YouTube videos to the shared playlist.
+- **Skip Videos** – 5 sec palying song can aslo be skipped.
+- **Control Playback** – Play, pause, or next — changes are synced for all users in real-time.
 - **Chat & Interact** – Send messages via the integrated live chat box.
 
 ---
