@@ -42,19 +42,6 @@ BondBeat is a **full-stack microservices-based real-time video synchronization p
 
 ---
 
-## 📸 Screenshots
-
-<p align="center">
-  <img width="48%" alt="Sync Player" src="https://github.com/user-attachments/assets/0af3efdf-7a67-4590-91a7-ea50c66a4fe6" />
-  <img width="48%" alt="Playlist Management" src="https://github.com/user-attachments/assets/1dfa1699-e8a6-4eb3-a1b5-51fa4d16b9c6" />
-</p>
-<p align="center">
-  <img width="48%" alt="Live Chat" src="https://github.com/user-attachments/assets/26dce990-a85b-4681-b5c5-15ff12132454" />
-  <img width="48%" alt="Room Interface" src="https://github.com/user-attachments/assets/5362a98d-bada-43ce-a218-f0cceeacb1d6" />
-</p>
-
----
-
 ## 🛰 Architecture Overview
 
 BondBeat follows a modern microservices pattern:
