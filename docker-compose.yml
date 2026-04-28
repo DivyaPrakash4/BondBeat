@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: bondbeat_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  auth-service:
+    build: ./auth-service
+    container_name: auth-service
+    restart: always
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/bondbeat_auth?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+
+  room-service:
+    build: ./room-service
+    container_name: room-service
+    restart: always
+    ports:
+      - "8082:8082"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/bondbeat_room?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+
+  frontend:
+    build: ./frontend
+    container_name: bondbeat_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - auth-service
+      - room-service
+
+volumes:
+  mysql_data:

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # BondBeat
 Real-Time YouTube Sync &amp; Chat Platform - Collaborative Online Music_Player
 =======
@@ -68,3 +69,60 @@ Built with **React (Vite)** on the frontend, **Spring Boot** on the backend, and
 
 _BondBeat – Watch. Sync. Connect._
 >>>>>>> 44bcf003f2eeed2487ee82364ed3119732245644
+=======
+# BondBeat - Collaborative Video Streaming
+
+BondBeat is a real-time collaborative video platform where users can sync YouTube playback, chat, and build playlists together.
+
+Built with **Spring Boot** (Backend) and **React/Vite** (Frontend) with **WebSockets (STOMP)** for real-time synchronization.
+
+---
+
+## 🚀 Getting Started
+
+### 1. Prerequisites
+- **Java 17+**
+- **Node.js 18+**
+- **Maven**
+
+---
+
+### 2. Run the Backend (Spring Boot)
+1. Navigate to the `backend` folder.
+2. Run the following command:
+   ```bash
+   mvn spring-boot:run
+   ```
+3. The server will start at `http://localhost:8080`.
+4. H2 Console Access: `http://localhost:8080/h2-console` (JDBC URL: `jdbc:h2:mem:bondbeatdb`)
+
+---
+
+### 3. Run the Frontend (React + Vite)
+1. Navigate to the `frontend` folder.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the dev server:
+   ```bash
+   npm run dev
+   ```
+4. Open your browser at `http://localhost:5173`.
+
+---
+
+## 💎 Features
+- **Real-Time Sync**: Play, pause, seek, and track changes are synced across all clients in the room.
+- **Dynamic Playlist**: Add YouTube links to a shared queue in real-time.
+- **Live Chat**: High-performance messaging using STOMP WebSockets.
+- **Premium UI**: Modern dark theme with glassmorphism and smooth animations.
+- **Responsive Layout**: Designed for high-fidelity desktop experience.
+
+---
+
+## 🛠️ Tech Stack
+- **Frontend**: React, Vite, Axios, Lucide Icons, StompJS, SockJS.
+- **Backend**: Java Spring Boot, JPA, H2 Database (In-Memory), Spring WebSocket.
+- **Styling**: Vanilla CSS with modern CSS variables and glassmorphism techniques.
+>>>>>>> 18fbf8e (Upgrade BondBeat with microservices, JWT auth, Docker support, and real-time sync)
